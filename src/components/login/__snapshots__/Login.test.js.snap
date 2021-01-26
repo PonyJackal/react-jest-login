@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render components without crashing matches snapshot 1`] = `
+<div
+  className="container"
+>
+  <h1>
+    Sign in to continue
+  </h1>
+  <form>
+    <div
+      className="form-row"
+    >
+      <label
+        htmlFor="email"
+      >
+        Email
+      </label>
+      <input
+        className=""
+        id="email"
+        name="email"
+        onChange={[Function]}
+        type="email"
+        value=""
+      />
+      
+    </div>
+    <div
+      className="form-row"
+    >
+      <label
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        className=""
+        id="password"
+        name="password"
+        onChange={[Function]}
+        type="password"
+        value=""
+      />
+      
+    </div>
+    <button
+      data-testid="submit-button"
+      onClick={[Function]}
+      type="button"
+    >
+      Sign In
+    </button>
+  </form>
+</div>
+`;

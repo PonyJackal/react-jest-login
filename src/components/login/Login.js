@@ -12,7 +12,8 @@ const Login = () => {
       email: '',
       password: ''
     },
-    isValid: false
+    isValid: false,
+    isSubmittted: false
   })
   //input change handler
   const handleChange = (event) => {
@@ -37,12 +38,11 @@ const Login = () => {
       },
       isValid: isValid
     })
-    console.log(isValid)
     if (isValid) {
-      console.log(formData)
-    }
-    else {
-      console.log("invalid form")
+      setFormData({
+        ...formData,
+        isSubmittted: true
+      })
     }
   }
   //form validation
@@ -54,26 +54,25 @@ const Login = () => {
     }
 
     if (!formData.values.email) {
-      errors.email = "Cannot be blank"
+      errors.email = "Email cannot be blank"
     }
     else if (!regex.test(formData.values.email)) {
       errors.email = "Invalid email format"
     }
 
     if (!formData.values.password) {
-      errors.password = "Cannot be blank"
+      errors.password = "Password cannot be blank"
     }
     else if (formData.values.password.length < 4) {
       errors.password = "Password must be more than 4 characters"
     }
-    console.log("errors", formData.values)
     return errors;
   }
 
   return (
     <div className="container">
       <h1>Sign in to continue</h1>
-      {Object.keys(formData.errors).length === 0 && formData.isValid && (
+      {formData.isSubmittted && (
         <span className="success-msg">Form submitted successfully</span>
       )}
       <form>
@@ -107,7 +106,7 @@ const Login = () => {
           )}
         </div>
 
-        <button type="button" onClick={handleSubmit}>Sign In</button>
+        <button data-testid="submit-button" type="button" onClick={handleSubmit}>Sign In</button>
       </form>
     </div>
   )
