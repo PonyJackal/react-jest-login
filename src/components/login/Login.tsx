@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
+import { FormData, Values } from './../../interfaces'
 import './Login.scss'
+
+
 
 const Login = () => {
   //sate for form
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     values: {
       email: '',
       password: ''
@@ -16,7 +19,7 @@ const Login = () => {
     isSubmittted: false
   })
   //input change handler
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target
     setFormData({
       ...formData,
@@ -27,7 +30,7 @@ const Login = () => {
     })
   }
   //form submission handler
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     const errors = validation()
     const isValid = !errors.email && !errors.password ? true : false
     setFormData({
@@ -50,7 +53,7 @@ const Login = () => {
     }
   }
   //form validation
-  const validation = () => {
+  const validation = (): Values => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
     const errors = {
       email: "",
