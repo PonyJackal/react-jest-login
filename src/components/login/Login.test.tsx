@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { render, screen, cleanup, fireEvent } from '@testing-library/react'
 import renderer from 'react-test-renderer'
 
-import Login from './../login/Login'
+import Login from './Login'
 
 afterEach(cleanup)
 
