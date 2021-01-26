@@ -41,7 +41,11 @@ const Login = () => {
     if (isValid) {
       setFormData({
         ...formData,
-        isSubmittted: true
+        isSubmittted: true,
+        errors: {
+          email: "",
+          password: ""
+        }
       })
     }
   }
