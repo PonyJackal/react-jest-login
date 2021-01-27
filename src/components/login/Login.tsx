@@ -33,14 +33,7 @@ const Login = () => {
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     const errors = validation()
     const isValid = !errors.email && !errors.password ? true : false
-    setFormData({
-      ...formData,
-      errors: {
-        email: errors.email,
-        password: errors.password
-      },
-      isValid: isValid
-    })
+
     if (isValid) {
       setFormData({
         ...formData,
@@ -48,7 +41,18 @@ const Login = () => {
         errors: {
           email: "",
           password: ""
-        }
+        },
+        isValid: true
+      })
+    }
+    else {
+      setFormData({
+        ...formData,
+        errors: {
+          email: errors.email,
+          password: errors.password
+        },
+        isValid: false
       })
     }
   }
@@ -79,7 +83,7 @@ const Login = () => {
   return (
     <div className="container">
       <h1>Sign in to continue</h1>
-      {formData.isSubmittted && (
+      {formData.isValid && formData.isSubmittted && (
         <span className="success-msg">Form submitted successfully</span>
       )}
       <form>
